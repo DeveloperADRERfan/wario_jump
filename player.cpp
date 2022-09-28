@@ -1,6 +1,7 @@
 #include "DxLib.h"
 #include "game.h"
 #include "player.h"
+#include <iostream>
 
 Player::Player()
 {
@@ -39,8 +40,16 @@ void Player::update()
 
 void Player::draw()
 {
-	if (m_isDead)	return;
-	DrawGraphF(m_pos.x, m_pos.y, m_handle, true);
+	if (m_isDead)
+	{
+		DrawRectGraph(m_pos.x, m_pos.y, 128, 0, 128, 128, m_handle, true);
+		std::cout << "¶‘¶" << '\n';
+	}
+	else
+	{
+		DrawRectGraph(m_pos.x, m_pos.y, 0, 0, 128, 128, m_handle, true);
+		std::cout << "Ž€–S" << '\n';
+	}
 }
 
 bool Player::isCol(Car& car)
